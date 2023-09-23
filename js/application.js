@@ -16,6 +16,15 @@ var getTodos = function() {
         if (task.completed) return task.id;
       });
       
+      var progress = ((completedTasks.length / taskList.length) * 100).toFixed(2);
+      $('#footer > div > p').text(progress + "%");
+      if (progress != 0) {
+        $('#progress-bar').css({'width': progress + "%", "background-color": "#9ce4ba"});
+      }
+      else {
+        $('#progress-bar').css({'width': "100%", "background-color": "#e2e2e2"});
+      }
+
       var filter = $('.active-filter').attr('id');
       if (filter === 'all') taskList = response.tasks;
       else if (filter === 'active') taskList = activeTasks;
@@ -117,6 +126,9 @@ $(document).ready(function() {
   });
   $(document).on('click', '.delete', function() {
     removeTodo($(this).data('id'));
+  });
+  $(document).on('click', '.what-do', function() {
+    $('.what-do').attr('placeholder', '');
   });
   $(document).on('change', '.mark-complete', function() {
     if (this.checked) {
