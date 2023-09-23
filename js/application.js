@@ -62,7 +62,7 @@ var newTodo = function() {
       }
     }),
     success: function (response, textStatus) {
-      $('.what-do').val('What was I going to do?');
+      $('.what-do').val('');
       getTodos();
     },
     error: function (request, textStatus, errorMessage) {
@@ -131,12 +131,8 @@ $(document).ready(function() {
     $('.what-do').attr('placeholder', '');
   });
   $(document).on('change', '.mark-complete', function() {
-    if (this.checked) {
-      markCompleted($(this).data('id'));
-    }
-    else {
-      markActive($(this).data('id'));
-    }
+    if (this.checked) markCompleted($(this).data('id'));
+    else markActive($(this).data('id'));
   })
   $("#filterTasks > li").on('click', function() {
     toggleFilter(this);
