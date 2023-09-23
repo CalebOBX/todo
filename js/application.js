@@ -59,7 +59,7 @@ var removeTodo = function(id) {
   });
 }
 
-var markCompleted = function (id) {
+var markCompleted = function(id) {
   $.ajax({
     type: 'PUT',
     url: 'https://fewd-todolist-api.onrender.com/tasks/' + id + '/mark_complete?api_key=319',
@@ -73,7 +73,7 @@ var markCompleted = function (id) {
    });
 }
 
-var markActive = function (id) {
+var markActive = function(id) {
   $.ajax({
     type: 'PUT',
     url: 'https://fewd-todolist-api.onrender.com/tasks/' + id + '/mark_active?api_key=319',
@@ -85,6 +85,11 @@ var markActive = function (id) {
       console.log(errorMessage);
     }
   });
+}
+
+var toggleFilter = function(filter) {
+  $('#filterTasks').children().removeClass('active-filter');
+  $(filter).toggleClass('active-filter');
 }
 
 $(document).ready(function() {
@@ -103,5 +108,8 @@ $(document).ready(function() {
     else {
       markActive($(this).data('id'));
     }
+  })
+  $("#filterTasks > li").on('click', function() {
+    toggleFilter(this);
   })
 });

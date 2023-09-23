@@ -78,7 +78,7 @@ html, body {
   background-color: #888;
   font-weight: bold;
 }
-.filter-item:active {
+.active-filter {
   background-color: #999;
 }
 
