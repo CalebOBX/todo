@@ -1,0 +1,92 @@
+html, body {
+  background-color: #999;
+  font-size: 1vw;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  line-height: 1vh;
+  height: 100%;
+  overflow: hidden;
+}
+
+#main {
+  background-color: #e2e2e2;
+  border: 2px solid black;
+  border-radius: 3px;
+  height: 80%;
+  width: 100%;
+  margin-top: 5vh;
+  padding: 1vh 0;
+  overflow-y: scroll;
+}
+
+.what-do {
+  margin: 1vh 0;
+  padding: 1vh;
+  text-align: center;
+  width: 50%;
+  border: 2px solid black;
+  border-radius: 3px;
+}
+
+.list-group {
+  margin: 1vh auto;
+  position: relative;
+  width: 50%;
+  border: 2px solid black;
+}
+.list-group-item {
+  margin: 0 auto;
+  padding: 1vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.list-group-item:hover {
+  background-color: #e2e2e2;
+}
+.list-group-item > div {
+  border: 1px solid black;
+}
+.todo-label {
+  flex-grow: 2;
+  padding: 0 1vw;
+  margin: 0 2vw;
+  line-height: 2vh;
+}
+.btn {
+  text-align: right;
+}
+
+#filterTasks {
+  background-color: #fff;
+  margin: 2vh auto;
+  position: relative;
+  width: 50%;
+  border: 2px solid black;
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-around;
+  padding-left: 0;
+}
+.filter-item {
+  list-style: none;
+  padding: 1vh 1vw;
+  text-align: center;
+  width: 100%;
+}
+.filter-item:hover {
+  background-color: #888;
+  font-weight: bold;
+}
+.filter-item:active {
+  background-color: #999;
+}
+
+#footer {
+  background-color: #e2e2e2;
+  position: fixed;
+  bottom: 0;
+  border-top: 2px solid black;
+  text-align: center;
+  width: 100%;
+}
