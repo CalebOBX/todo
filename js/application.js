@@ -5,7 +5,23 @@ var getTodos = function() {
     dataType: 'json',
     success: function (response, textStatus) {
       $('.list-group').empty();
-      response.tasks.forEach(function (task) {
+
+      var taskList = response.tasks;
+
+      var activeTasks = response.tasks.filter(function(task) {
+        if (!task.completed) return task.id;
+      });
+
+      var completedTasks = response.tasks.filter (function(task) {
+        if (task.completed) return task.id;
+      });
+      
+      var filter = $('.active-filter').attr('id');
+      if (filter === 'all') taskList = response.tasks;
+      else if (filter === 'active') taskList = activeTasks;
+      else if (filter === 'completed') taskList = completedTasks;
+
+      taskList.forEach(function(task) {
         $('.list-group').append(
           "<li class='list-group-item'>" +
           "<input class='mark-complete' type='checkbox' value='' id='formCheckBox' data-id='" + task.id + "'" + (task.completed ? "checked" : "") + ">" +
@@ -90,6 +106,7 @@ var markActive = function(id) {
 var toggleFilter = function(filter) {
   $('#filterTasks').children().removeClass('active-filter');
   $(filter).toggleClass('active-filter');
+  getTodos();
 }
 
 $(document).ready(function() {
